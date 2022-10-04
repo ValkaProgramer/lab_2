@@ -1,11 +1,11 @@
-class Menu{
+class Menu extends Entity{
     public Beverage[] beverages = new Beverage[5];
     public Menu(){
-        this.beverages[0] = new Beverage(1);
-        this.beverages[1] = new Beverage(2);
-        this.beverages[2] = new Beverage(3);
-        this.beverages[3] = new Beverage(4);
-        this.beverages[4] = new Beverage(5);
+        this.beverages[0] = new Cappucino();
+        this.beverages[1] = new Latte();
+        this.beverages[2] = new Frappe();
+        this.beverages[3] = new DoubleLatte();
+        this.beverages[4] = new IcedCaramelLatte();
     }
 
     public void get(){

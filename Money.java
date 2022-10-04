@@ -1,15 +1,7 @@
-class Money{
-    private int amount;
+class Money extends Entity {
+    protected String currency = "MDL";
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public Money(){
-        this.amount = 0;
-    }
-
-    public void Add(int add){
-        amount += add;
+    public String getCurrency() {
+        return currency;
     }
 }

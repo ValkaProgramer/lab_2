@@ -1,4 +1,4 @@
-class Cooldown {
+class Cooldown extends Entity{
     private int interval;
 
     public Cooldown(){

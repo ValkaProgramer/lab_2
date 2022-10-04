@@ -4,14 +4,14 @@ import java.util.Date;
 class Main{
     public static void main(String[] args){
         Cooldown mainCooldown = new Cooldown();
-        Money todayMoney = new Money();
+        Profit todayProfit = new Profit();
         Tips todayTips = new Tips();
         Queue mainQueue = new Queue();
         Date moment = new Date();
         long spawnEnd, workEnd, spawnStart = moment.getTime() / 1000,
         workStart = moment.getTime() / 1000;
         Random rand = new Random();
-        int processTime = 100;
+        int ifVegan, processTime = 100;
         boolean emptiness;
         Menu menuObject = new Menu();
         System.out.print("\033[H\033[2J");
@@ -25,7 +25,27 @@ class Main{
                 System.out.println("Next visitor in " + mainCooldown.getInterval() + " seconds!!!");
                 spawnStart = spawnEnd;
                 emptiness = mainQueue.isEmpty();
-                mainQueue.enqueue(new Beverage(rand.nextInt(5) + 1));
+                ifVegan = rand.nextInt(2);
+                switch(rand.nextInt(8) + 1){
+                    case 1: mainQueue.enqueue(ifVegan == 1 ? new Cappucino() : new CappucinoVegan());
+                    break;
+                    case 2: mainQueue.enqueue(ifVegan == 1 ? new Latte() : new LatteVegan());
+                    break;
+                    case 3: mainQueue.enqueue(ifVegan == 1 ? new Frappe() : new FrappeVegan());
+                    break;
+                    case 4: mainQueue.enqueue(ifVegan == 1 ? new DoubleLatte() : new DoubleLatteVegan());
+                    break;
+                    case 5: mainQueue.enqueue(ifVegan == 1 ? new IcedCaramelLatte() : new IcedCaramelLatteVegan());
+                    break;
+                    case 6: mainQueue.enqueue(new Lemonade());
+                    break;
+                    case 7: mainQueue.enqueue(new Milkshake());
+                    break;
+                    case 8: mainQueue.enqueue(new Smoothie());
+                    break;
+                    default:
+                    break;
+                }
                 if(emptiness) workStart = date.getTime() / 1000;
             }
             if(mainQueue.isEmpty()){
@@ -34,8 +54,8 @@ class Main{
                 processTime = mainQueue.front().time;
             }
             if(processTime < workEnd - workStart && !mainQueue.isEmpty()){
-                mainQueue.dequeue(todayMoney);
-                System.out.println("Current profit is " + todayMoney.getAmount() + " MDL");
+                mainQueue.dequeue(todayProfit);
+                System.out.println("Current profit is " + todayProfit.getAmount() + " " + todayProfit.getCurrency());
                 processTime = mainQueue.front().time;
                 workStart = workEnd;
                 todayTips.setQuantity(rand.nextInt(9));

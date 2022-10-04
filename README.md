@@ -1,3 +1,3 @@
-# Lab 2  
-I implemented a queue of order for a coffee. Any coffee is an object of class Beverage and mainQueue object of class Queue contains a queue of coffee objects. There are objects of classes Cooldown, Money, Tips, Menu and the class Main. It works automatically, creating coffee object and adding it to the queue, then extracting them after some time.  
-![image](./images/work.png)
+# Lab 3  
+I improved my project by decompositioning all the classes. My root class is Entity and everything else inherit its properties.  
+![image](./images/diagram.png)

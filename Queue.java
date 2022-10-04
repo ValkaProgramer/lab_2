@@ -1,4 +1,4 @@
-class Queue{
+class Queue extends Entity{
     private Node front, rear;
     private int size;
 
@@ -32,13 +32,13 @@ class Queue{
         System.out.println("One more " + info.name + " to be done");
     }
 
-    public void dequeue(Money M){
+    public void dequeue(Profit M){
         Beverage done = front.info;
         front = front.next;
         if(isEmpty()) rear = null;
         size--;
         System.out.println(done.name + " is Ready!!!");
-        M.Add(done.price);
+        M.Add(done.price - (done.milkContained ? 5 : 0));
     }
     
     public Beverage front(){
